@@ -1,6 +1,6 @@
 <?php
-include 'Utilisateur.php';
-include 'Topic.php';
+require_once('Utilisateur.php');
+require_once('Topic.php');
 
 $user = new Utilisateur();
 $topic = new Topic();

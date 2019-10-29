@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 
 class DBClass
 {
@@ -36,6 +35,7 @@ class DBClass
     }
 
     public function connection($mail, $pass){
+        session_start();
         $dateTime = date('Y-m-d, H:i:s');
 
         $req = $this->getPDO()->prepare("select * from user where adrMail = ? and password = ?");
@@ -60,6 +60,8 @@ class DBClass
     }
 
     public function inscription($firstName, $lastName, $userName, $mail, $password) {
+        session_start();
+
         $dateTime = date('Y-m-d, H:i:s');
         /*$req = $this->getPDO()->query("select adrMail from user");
         while($datas = $req->fetch()){
@@ -95,6 +97,8 @@ class DBClass
     public function delete(){}
 
     public function createTopic($name, $description) {
+        session_start();
+
         $dateTime = date('Y-m-d, H:i:s');
 
         $req = $this->getPDO()->prepare("insert into topic(id, name, description, createdAt, createdBy, nbrMembres) values (default, :name, :description, :createdAt, :createdBy, 1)");
@@ -111,7 +115,37 @@ class DBClass
             $req->closeCursor();
             return false;
         }
+    }
 
+    public function selectTopicByUser($username) {
+        $i = 0;
+        $tabTopic = array();
+        $req = $this->getPDO()->prepare("select id, name, description, createdAt from topic where createdBy = ?");
+        $req->execute(array($username));
+
+        while($isConnecte = $req->fetch()) {
+            $tabTopic[$i] = $isConnecte['name'];
+            $i++;
+        }
+        $req->closeCursor();
+        //print_r($tabTopic);
+
+        return $tabTopic;
+    }
+
+    public function selectDescByName($name) {
+        $tabTopic = array();
+
+        $req = $this->getPDO()->prepare("select name, description, createdAt, nbrMembres from topic where name = ?");
+        $req->execute(array($name));
+        $isConnecte = $req->fetch();
+
+        $tabTopic[0] = $isConnecte['name'];
+        $tabTopic[1] = $isConnecte['description'];
+        $tabTopic[2] = $isConnecte['createdAt'];
+        $tabTopic[3] = $isConnecte['nbrMembres'];
+
+        return $tabTopic;
     }
 }
 

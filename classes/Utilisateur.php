@@ -1,5 +1,5 @@
 <?php
-include 'DBClass.php';
+require_once('DBClass.php');
 
 class Utilisateur {
     protected $id;

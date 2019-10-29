@@ -1,0 +1,16 @@
+h1{
+    text-align: center;
+}
+
+form{
+    padding-top: 150px;
+}
+
+.form-group{
+    padding-right: 300px;
+    padding-left: 300px;
+}
+
+label{
+    padding-right: 200px;
+}

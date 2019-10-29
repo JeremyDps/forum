@@ -1,4 +1,5 @@
 <?php
+require_once('DBClass.php');
 
 class Topic {
     protected $titre;
@@ -9,14 +10,29 @@ class Topic {
     function __construct() {
     }
 
+
+
     function create($name, $description) {
         $db = new DBClass('forum');
 
         if($db->createTopic($name, $description)){
-            echo 'topic cree';
+            header('Location: http://localhost/forum/accueil.php');
+            exit();
         }else{
             echo 'erreur dans la creation du topic';
         }
+    }
+
+    function topicByUser($username) {
+        $db = new DBClass('forum');
+
+        return $db->selectTopicByUser($username);
+    }
+
+    function descByName($name) {
+        $db = new DBClass('forum');
+
+        return $db->selectDescByName($name);
     }
 
     function delete() {}
