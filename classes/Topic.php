@@ -16,7 +16,7 @@ class Topic {
         $db = new DBClass('forum');
 
         if($db->createTopic($name, $description)){
-            header('Location: http://localhost/forum/accueil.php');
+            header('Location: http://localhost/forum/accueil/accueil.php');
             exit();
         }else{
             echo 'erreur dans la creation du topic';

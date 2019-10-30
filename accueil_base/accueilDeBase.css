@@ -1,0 +1,35 @@
+body{
+    background-image: url("../accueil.jpg");
+}
+
+#container{
+    text-align: center;
+    margin: 150px 80px 0 80px;
+    padding: 50px 50px 50px 50px;
+    background-color: #ffffff;
+    border: black 2px solid;
+    border-radius: 10px 10px 10px 10px;
+    opacity: 0.9;
+}
+
+h1{
+    padding-bottom: 170px;
+    font-size: 70px;
+    color: black;
+}
+
+a{
+    text-decoration: none;
+    padding-right: 30px;
+    padding-left: 30px;
+    font-size: 40px;
+    color: black;
+}
+
+a:hover{
+    color: #a7856d;
+}
+
+li{
+    list-style-type: none;
+}

@@ -1,0 +1,69 @@
+body{
+    background-image: url("../fond-accueil.png");
+}
+
+
+#entete{
+    padding-bottom: 100px;
+    color: white;
+    text-align: center;
+}
+
+.nav-head{
+    display: flex;
+    border: 1px solid black;
+    background-color: #3B4241;
+
+}
+
+.nav-head a{
+    text-decoration: none;
+    color: #D4E8E5;
+}
+
+.nav-head-ul{
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-head-ul li{
+    padding-top : 20px;
+}
+
+.nav-head-ul a
+{
+    font-size: 1.3em;
+    color: #181818;
+    text-decoration: none;		/*ne pas souligner/surligner/barrer le texte*/
+    color: #D4E8E5;
+}
+
+.nom{
+    font-size: 50px;
+}
+
+.titre{
+    padding-top: 34px;
+}
+
+#new-topic{
+    font-size: 1.3em;
+    background-color: green;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px 5px 5px 5px;
+    padding: 10px 10px 10px 10px;
+}
+
+#new-topic:hover{
+    text-decoration: none;
+}
+
+#lien{
+    padding-bottom: 50px;
+}
+
+#topic-description{
+    text-align: center;
+}
+

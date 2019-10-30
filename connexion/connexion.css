@@ -1,0 +1,21 @@
+body{
+    background-image: url("../fond.jpg");
+}
+
+.text-block{
+    background-color: white;
+    padding-bottom: 20px;
+}
+
+form{
+    padding-top: 150px;
+}
+
+h1{
+    text-align: center;
+    padding-top: 50px;
+}
+
+.row div{
+    border: #0b2e13 2px solid;
+}

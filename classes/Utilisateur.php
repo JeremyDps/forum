@@ -22,10 +22,11 @@ class Utilisateur {
 
         if($db->inscription($firstName, $lastName, $userName, $mail, $password) === true){
             //echo ' vous etes inscris';
-            header('Location: http://localhost/forum/accueil.php');
+            header('Location: http://localhost/forum/accueil/accueil.php');
             exit();
         }else{
-            echo "Erreur dans votre inscription, les champs sont peut-être incorrects";
+            header('Location: http://localhost/forum/inscription/erreurInscription.html');
+            exit();
         }
          //echo $db->inscription($firstName, $lastName, $userName, $mail, $password);
 
@@ -35,10 +36,11 @@ class Utilisateur {
         $db = new DBClass('forum');
 
         if($db->connection($mail, $pass) === true){
-            header('Location: http://localhost/forum/accueil.php');
+            header('Location: http://localhost/forum/accueil/accueil.php');
             exit();
         }else{
-            echo 'erreur : essayez de vous reconnecter ou ' . '<a href="../inscription.php">' . 'inscrivez vous' .'</a>';
+            header('Location: http://localhost/forum/connexion/erreurConnexion.html');
+            exit();
         }
     }
 
