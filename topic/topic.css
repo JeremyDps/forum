@@ -4,7 +4,6 @@ body{
 
 
 #entete{
-    padding-bottom: 100px;
     color: white;
     text-align: center;
 }
@@ -42,8 +41,55 @@ body{
     font-size: 50px;
 }
 
-.titre{
-    padding-top: 34px;
+section{
+    text-align: center;
+}
+
+#section_1{
+    min-height: 720px;
+    border-right: 2px black solid;
+}
+
+h2{
+    font-size: 2.5em;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#list_topic{
+    border-top: 1px #C4C4C4 solid;
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+.list_topic_section{
+    text-decoration: none;
+    color: #6E6E6E;
+}
+
+/*[class*="col-"], footer {
+    background-color: lightgreen;
+    border: 2px solid black;
+    border-radius: 6px;
+    line-height: 40px;
+    text-align: center;
+}*/
+
+
+/*Section 2: nom topic/description/thèmes*/
+
+#section_2{
+    padding-top: 170px;
+}
+
+
+#welcome{
+    font-size: 5em;
+}
+
+#link_new_topic{
+    margin-top: 30px;
+    padding-bottom: 50px;
 }
 
 #new-topic{
@@ -55,15 +101,11 @@ body{
     padding: 10px 10px 10px 10px;
 }
 
-#new-topic:hover{
-    text-decoration: none;
+.topics{
+    border: 1px #D1D1D1 solid;
+    border-radius: 8px 8px 8px 8px;
+    background-color: #F5F2F2;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 15px;
 }
-
-#lien{
-    padding-bottom: 50px;
-}
-
-#topic-description{
-    text-align: center;
-}
-

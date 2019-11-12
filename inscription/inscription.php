@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Forum - Inscription</title>
     <link rel="stylesheet" href="inscription.css">
-    <link href="../bootstrap-4.3.1/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <h1>Mon forum</h1>

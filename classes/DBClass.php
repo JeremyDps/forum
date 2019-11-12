@@ -117,6 +117,8 @@ class DBClass
         }
     }
 
+
+
     public function selectTopicByUser($username) {
         $i = 0;
         $tabTopic = array();
@@ -136,16 +138,61 @@ class DBClass
     public function selectDescByName($name) {
         $tabTopic = array();
 
-        $req = $this->getPDO()->prepare("select name, description, createdAt, nbrMembres from topic where name = ?");
+        $req = $this->getPDO()->prepare("select * from topic where name = ?");
         $req->execute(array($name));
         $isConnecte = $req->fetch();
 
-        $tabTopic[0] = $isConnecte['name'];
-        $tabTopic[1] = $isConnecte['description'];
-        $tabTopic[2] = $isConnecte['createdAt'];
-        $tabTopic[3] = $isConnecte['nbrMembres'];
+        $tabTopic[0] = $isConnecte['id'];
+        $tabTopic[1] = $isConnecte['name'];
+        $tabTopic[2] = $isConnecte['description'];
+        $tabTopic[3] = $isConnecte['createdAt'];
+        $tabTopic[4] = $isConnecte['nbrMembres'];
+
 
         return $tabTopic;
+    }
+
+    public function createTheme($name){
+        session_start();
+
+        $dateTime = date('Y-m-d, H:i:s');
+
+        $req = $this->getPDO()->prepare("insert into theme(id, idTopic, name, createdBy, createdAt) values(default, :idTopic, :name, :createdBy, :createdAt)");
+
+        echo $_SESSION['idTopic'];
+        $req->execute(array(
+            'idTopic' => $_SESSION['idTopic'],
+            'name' => $name,
+            'createdBy' => $_SESSION['username'],
+            'createdAt' => $dateTime
+        ));
+
+        $req = $this->getPDO()->prepare("select * from topic where id = ?");
+        $req->execute(array($_SESSION['idTopic']));
+
+        $isConnecte = $req->fetch();
+        echo $isConnecte['name'];
+        echo "  bjr";
+        $req->closeCursor();
+        return $isConnecte['name'];
+    }
+
+    public function selectThemeByTopic($name){
+        $tabTheme = array();
+        $i = 0;
+
+        $req = $this->getPDO()->prepare("select theme.name from theme inner join topic on topic.id = theme.idTopic where topic.name = ?");
+
+        $req->execute(array($name));
+
+        while($isConnecte = $req->fetch()){
+            $tabTheme[$i] = $isConnecte['name'];
+            $i++;
+        }
+
+        $req->closeCursor();
+
+        return $tabTheme;
     }
 }
 

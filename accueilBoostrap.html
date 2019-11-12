@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="accueilBoostrap.css">
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+
+        <!--Entete de la page-->
+
+        <header>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-12">
+                            <h1>Mon forum</h1>
+                        </div>
+                        <div class="offset-lg-3 col-lg-5">
+                            <ul>
+                                <div class="row">
+                                    <div class="col-lg-4 col-sm-4">
+                                        <li>
+                                            <a href="#">Rechercher</a>
+                                        </li>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-4">
+                                        <li>
+                                            <a href="#">Déconnexion</a>
+                                        </li>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-4">
+                                        <li>
+                                            <a href="#">Mon profil</a>
+                                        </li>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!--Section avec la liste des topic pour l'utilisateur-->
+
+        <div class="row">
+            <div class="col-lg-4" id="list_topic">
+                <section>
+                    <div class="col-lg-12">
+                        Liste des topics
+                        <div class="row">
+                            <div class="offset-lg-1 col-lg-10">
+                                <a href="#">topic 1</a>
+                            </div>
+                            <div class="offset-lg-1 col-lg-10">
+                                <a href="#">topic 2</a>
+                            </div>
+                            <div class="offset-lg-1 col-lg-10">
+                                <a href="#">topic 3</a>
+                            </div>
+                            <div class="offset-lg-1 col-lg-10">
+                                <a href="#">topic 4</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+            <!--Section avec la description du profil connecté-->
+
+            <div class="col-lg-8" id="aaa">
+                <section>
+                    <div class="row">
+                        <div class="offset-lg-1 col-lg-10">
+                            <h1>Bienvenue JDupuis</h1>
+                        </div>
+                        <div class="offset-lg-4 col-lg-4">
+                            <p><a href="#">Cliquez ici pour creer un nouveau topic</a> </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="offset-lg-2 col-lg-2">
+                            <a href="#">topic 1</a>
+                        </div>
+                        <div class="offset-lg-1 col-lg-2">
+                            <a href="#">topic 2</a>
+                        </div>
+                        <div class="offset-lg-1 col-lg-2">
+                            <a href="#">topic 3</a>
+                        </div>
+                        <div class="offset-lg-2 col-lg-2">
+                            <a href="#">topic 4</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
+<?php
+                    foreach ($res as $elem) {
+                        ?>
+<li class="col-lg-3 offset-lg-1 lien">
+    <a href="../topic/topic.php?nom=<?= $elem ?>"><?php  echo $elem;  ?></a>
+</li>
+<?php   }
+                    ?>
+
+
+<script>
+    var larg = (window.innerWidth);
+    console.log(larg);
+</script>

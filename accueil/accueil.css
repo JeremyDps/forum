@@ -3,12 +3,12 @@ body{
 }
 
 #entete{
-    padding-bottom: 300px;
     color: white;
     text-align: center;
 }
 
 .nav-head{
+    display: flex;
     border: 1px solid black;
     background-color: #3B4241;
 
@@ -32,7 +32,6 @@ body{
 {
     font-size: 1.3em;
     color: #181818;
-
     text-decoration: none;		/*ne pas souligner/surligner/barrer le texte*/
     color: #D4E8E5;
 }
@@ -41,8 +40,51 @@ body{
     font-size: 50px;
 }
 
-h1{
-    font-size: 6em;
+/*[class*="col-"], footer {
+    background-color: lightgreen;
+    border: 2px solid black;
+    border-radius: 6px;
+    line-height: 40px;
+    text-align: center;
+}*/
+
+
+
+section{
+    text-align: center;
+}
+
+#section_1{
+    border-right: 2px black solid;
+}
+
+h2{
+    font-size: 2.5em;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#list_topic{
+    border-top: 1px #C4C4C4 solid;
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+.list_topic_section{
+    text-decoration: none;
+    color: #6E6E6E;
+}
+
+
+/*2e section : bienvenue/creer topic/liste topic
+ */
+
+#section_2{
+    padding-top: 170px;
+}
+
+#welcome{
+    font-size: 5em;
 }
 
 #new-topic{
@@ -54,27 +96,16 @@ h1{
     padding: 10px 10px 10px 10px;
 }
 
-#new-topic:hover{
-    text-decoration: none;
+#link_new_topic{
+    margin-top: 50px;
+    padding-bottom: 50px;
 }
 
-#lien{
-    padding-bottom: 100px;
+.topics{
+    border: 1px #D1D1D1 solid;
+    border-radius: 8px 8px 8px 8px;
+    background-color: #F5F2F2;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 15px;
 }
-
-ul{
-    list-style-type: none;
-}
-
-.lien{
-    border : 2px black solid;
-    border-radius: 7px 7px 7px 7px;
-    padding: 40px 20px 40px 20px;
-    margin-bottom: 10px;
-}
-
-.lien a{
-    text-decoration: none;
-    color: black;
-}
-

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="connexion.css">
-        <link href="../bootstrap-4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
     <h1>Mon forum</h1>
