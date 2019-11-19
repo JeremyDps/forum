@@ -23,6 +23,12 @@ class Theme {
         return $db->selectThemeByTopic($name);
     }
 
+    public function themeByName($nomTheme) {
+        $db = new DBClass('forum');
+
+        return $db->selectIdBytheme($nomTheme);
+    }
+
     public function getTopics() {}
 }
 

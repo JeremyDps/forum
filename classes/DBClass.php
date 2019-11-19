@@ -194,6 +194,58 @@ class DBClass
 
         return $tabTheme;
     }
+
+    public function selectIdByTheme($nomTheme){
+        session_start();
+
+        $req = $this->getPDO()->prepare("select id from theme where name = ?");
+
+        $req->execute(array($nomTheme));
+
+        $isConnecte = $req->fetch();
+
+        $idTheme = $isConnecte[0];
+
+        $req->closeCursor();
+
+        return $idTheme;
+    }
+
+
+    public function createMessage($message) {
+        session_start();
+
+        $dateTime = date('Y-m-d, H:i:s');
+
+        $req = $this->getPDO()->prepare("insert into message(idMessage, idTheme, auteur, contenu, createdAt) values(default, :idTheme, :auteur, :contenu, :createdAt)");
+
+        $req->execute(array(
+            'idTheme' => $_SESSION['idTheme'],
+            'auteur' => $_SESSION['username'],
+            'contenu' => $message,
+            'createdAt' => $dateTime
+        ));
+
+        $req->closeCursor();
+    }
+
+    public function selectMessageByTheme($idTheme) {
+        $tabMessages = array();
+        $i = 0;
+
+        $req = $this->getPDO()->prepare("select * from message where idTheme = ?");
+
+        $req->execute(array($idTheme));
+
+        while($isConnecte = $req->fetch()) {
+            $tabMessages[$i] = $isConnecte['contenu'];
+            $i++;
+        }
+
+        $req->closeCursor();
+
+        return $tabMessages;
+    }
 }
 
     ?>

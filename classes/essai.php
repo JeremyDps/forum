@@ -2,10 +2,12 @@
 require_once('Utilisateur.php');
 require_once('Topic.php');
 require_once ('Theme.php');
+require_once('post.php');
 
 $user = new Utilisateur();
 $topic = new Topic();
 $theme = new Theme();
+$post = new Post();
 
 if(isset($_POST['connexion'])) {
     $mail = $_POST['user'];
@@ -35,5 +37,11 @@ if(isset($_POST['theme'])){
     $name = $_POST['nom'];
 
     $theme->create($name);
+}
+
+if(isset($_POST['discussion'])){
+    $message = $_POST['message'];
+
+    $post->create($message);
 }
 ?>

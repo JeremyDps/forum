@@ -15,6 +15,8 @@ $res_theme = $theme->selectByTopic($_GET['nom']);
 
 $_SESSION['idTopic'] = $res[0];
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +89,7 @@ $_SESSION['idTopic'] = $res[0];
                             $retour_ligne++;
                             ?>
                             <div class="col-lg-2 topics">
-                                <a href="#"><?php  echo $elem; ?></a>
+                                <a href="../discussion/discussion.php?nom=<?= $elem ?>"><?php  echo $elem; ?></a>
                             </div>
                             <div class="offset-lg-1"></div>
                             <?php  if($retour_ligne == 3){
