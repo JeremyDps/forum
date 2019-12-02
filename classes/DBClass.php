@@ -43,6 +43,7 @@ class DBClass
         $isConnecte = $req->fetch();
 
         $_SESSION['username'] = $isConnecte['username'];
+        $_SESSION['mail'] = $mail;
 
         if ($isConnecte['adrMail'] === $mail && $isConnecte['password']) {
             $nbConnection = $isConnecte['nbConnexion'] + 1;
@@ -245,6 +246,122 @@ class DBClass
         $req->closeCursor();
 
         return $tabMessages;
+    }
+
+    public function selectProfileByUser($name){
+        $tabProfile = array();
+
+        $req = $this->getPDO()->prepare("select * from user where username = ?");
+        $req->execute(array($name));
+
+        $isConnecte = $req->fetch();
+
+        $tabProfile[0] = $isConnecte['nom'];
+        $tabProfile[1] = $isConnecte['prenom'];
+        $tabProfile[2] = $isConnecte['username'];
+        $tabProfile[3] = $isConnecte['adrMail'];
+        $tabProfile[4] = $isConnecte['modifierUsername'];
+        $tabProfile[5] = $isConnecte['nbConnexion'];
+        $tabProfile[6] = $isConnecte['lastConnexionDatetime'];
+
+        $req->closeCursor();
+
+        return $tabProfile;
+    }
+
+    public function updateUsername($username){
+        session_start();
+        $req = $this->getPDO()->prepare("update user set username = :newUser, modifierUsername = 0 where username = :user");
+        $req->execute(array(
+            'newUser' => $username,
+            'user' => $_SESSION['username']
+        ));
+
+        $this->updateUsernameOnTopic($username);
+        $this->updateUsernameOnTheme($username);
+        $this->updateUsernameOnMessage($username);
+
+        $_SESSION['username'] = $username;
+
+        $req->closeCursor();
+    }
+
+    public function updateUsernameOnTopic($username){
+        $req = $this->getPDO()->prepare("update topic set createdBy = :newUser where createdBy = :user");
+        $req->execute(array(
+            'newUser' => $username,
+            'user' => $_SESSION['username']
+        ));
+
+        $req->closeCursor();
+    }
+
+    public function updateUsernameOnTheme($username) {
+        $req = $this->getPDO()->prepare("update theme set createdBy = :newUser where createdBy = :user");
+        $req->execute(array(
+            'newUser' => $username,
+            'user' => $_SESSION['username']
+        ));
+
+        $req->closeCursor();
+    }
+
+    public function updateUsernameOnMessage($username) {
+        $req = $this->getPDO()->prepare("update message set auteur = :newUser where auteur = :user");
+        $req->execute(array(
+            'newUser' => $username,
+            'user' => $_SESSION['username']
+        ));
+
+        $req->closeCursor();
+    }
+
+    public function updateMail($mail){
+        session_start();
+
+        $req = $this->getPDO()->prepare("update user set adrMail = :newMail where adrMail = :mail");
+        $req->execute(array(
+            'newMail' => $mail,
+            'mail' => $_SESSION['mail']
+        ));
+
+        $_SESSION['mail'] = $mail;
+
+        $req->closeCursor();
+    }
+
+    public function passwordControl($old){
+        $req = $this->getPDO()->prepare("select password from user where password = ?");
+        $req->execute(array($old));
+
+        $isConnecte = $req->fetch();
+
+        if($isConnecte['password'] == $old){
+            $req->closeCursor();
+            return true;
+        }else{
+            $req->closeCursor();
+            return false;
+        }
+
+    }
+
+    public function updatePassword($new, $old){
+        session_start();
+        if($this->passwordControl($old)){
+            $req = $this->getPDO()->prepare("update user set password = :new where password = :old and username = :user");
+            $req->execute(array(
+                'new' => $new,
+                'old' => $old,
+                'user' => $_SESSION['username']
+            ));
+
+            $req->closeCursor();
+            return true;
+        }else{
+            echo "Erreur dans le changement du mot de passe";
+        }
+
     }
 }
 

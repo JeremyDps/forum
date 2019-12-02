@@ -26,7 +26,7 @@
             <ul class="nav-head-ul offset-lg-3">
                 <li><a class="col-lg-1 monlien" href="#">Rechercher</a></li>
                 <li><a class="col-lg-1" href="#">Déconnexion</a></li>
-                <li><a class="col-lg-2" href="#">Mon profil</a></li>
+                <li><a class="col-lg-2" href="../profil/profil.php?nom=<?= $_SESSION['username'] ?>">Mon profil</a></li>
             </ul>
             </p>
         </div>

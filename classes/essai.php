@@ -44,4 +44,28 @@ if(isset($_POST['discussion'])){
 
     $post->create($message);
 }
+
+if(isset($_POST['username'])) {
+    if(strlen($_POST['newUsername']) != 0) {
+        $user->setUsername($_POST['newUsername']);
+    }else{
+        echo "erreur";
+    }
+}
+
+if(isset($_POST['updateMail'])) {
+    if(strlen($_POST['newMail']) != 0) {
+        $user->setMail($_POST['newMail']);
+    }else{
+        echo "erreur";
+    }
+}
+
+if(isset($_POST['changePassword'])) {
+    if(strlen($_POST['newPassword']) != 0 && strlen($_POST['actualPassword']) != 0){
+        $user->setPassword($_POST['actualPassword'], $_POST['newPassword']);
+    }else{
+        echo "erreur";
+    }
+}
 ?>

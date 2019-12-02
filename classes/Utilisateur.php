@@ -44,6 +44,12 @@ class Utilisateur {
         }
     }
 
+    function selectProfile($name){
+            $db = new DBClass('forum');
+
+            return $db->selectProfileByUser($name);
+    }
+
     function unLog() {}
 
     function envoyerMessage() {
@@ -59,17 +65,32 @@ class Utilisateur {
     }
 
     function setMail($mail) {
-        $this->adrMail = $mail;
+        $db = new DBClass('forum');
+        $db->updateMail($mail);
+        header('Location: http://localhost/forum/profil/profil.php?nom='.$_SESSION['username']);
+        exit();
     }
 
     function setUsername($user) {
         if($this->modifierUsername == 1) {
-            $this->username = $user;
-            $this->modifierUsername--;
+            $db = new DBClass('forum');
+            $db->updateUsername($user);
+            header('Location: http://localhost/forum/accueil/accueil.php');
+            exit();
         }else{
             echo "Vous ne pouvez plus changer votre nom d'utilisateur";
         }
     }
+
+    function setPassword($new, $old){
+        $db = new DBClass('forum');
+
+        if($db->updatePassword($old, $new)){
+            header('Location: http://localhost/forum/accueil/accueil.php');
+            exit();
+        }
+    }
+
 }
 
 ?>

@@ -23,7 +23,6 @@
 <body>
 <form method="post" action="../classes/essai.php">
     <?php
-        echo $_GET['nom'] . " " . $res . "<br>";
         foreach ($mess as $message) {
     ?> <p> <?php echo $message . " ";?> </p> <?php
         }
