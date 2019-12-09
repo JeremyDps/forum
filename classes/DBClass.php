@@ -52,10 +52,12 @@ class DBClass
             $req->execute(array($nbConnection, $dateTime, $mail));
 
             $req->closeCursor();
+            $_SESSION['connecte'] = true;
 
             return true;
         }else{
             $req->closeCursor();
+            $_SESSION['connecte'] = false;
             return false;
         }
     }
@@ -82,9 +84,11 @@ class DBClass
             'lastConnexionDatetime' => $dateTime
         ))){
             $_SESSION['username'] = $userName;
+            $_SESSION['connecte'] = true;
             $req->closeCursor();
             return true;
         }else{
+            $_SESSION['connecte'] = false;
             $req->closeCursor();
             return false;
         }

@@ -1,5 +1,3 @@
-
-
 body{
     background-image: url("../fond-accueil.png");
 }
@@ -75,12 +73,35 @@ h2{
     text-align: center;
 }*/
 
-#new-topic{
-    font-size: 1.3em;
-    background-color: green;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 5px 5px 5px 5px;
-    padding: 10px 10px 10px 10px;
+.block_messages{
+    height: 650px;
+    overflow: auto;
+    width: 100%;
+    word-wrap: break-word;
 }
 
+.block_form{
+    border-top: 1px solid darkgrey;
+    padding-top: 10px;
+}
+
+.formulaire{
+    display: flex;
+    justify-content: space-between;
+}
+
+.form_message{
+    width: 70%;
+}
+
+.message_text{
+    text-align: left;
+}
+
+.one_message{
+    margin-top: 5px;
+}
+
+.message{
+    padding: 3px;
+}

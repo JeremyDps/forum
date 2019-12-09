@@ -1,9 +1,11 @@
 <?php
     session_start();
     include '../classes/Topic.php';
+    include '../classes/Utilisateur.php';
     $topic = new Topic();
     $res = $topic->topicByUser($_SESSION['username']);
 
+    $user = new Utilisateur();
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +17,13 @@
     <link rel="stylesheet" href="accueil.css">
 </head>
 <body>
+
+<?php  if($_SESSION['connecte'] == true)   {  ?>
+
+
 <div class="container-fluid">
+
+
 
     <!--Entete de la page-->
 
@@ -24,8 +32,8 @@
             <h1 class="nom offset-lg-1 col-lg-3"><a href="#">Mon forum</a></h1>
             <p>
             <ul class="nav-head-ul offset-lg-3">
-                <li><a class="col-lg-1 monlien" href="#">Rechercher</a></li>
-                <li><a class="col-lg-1" href="#">Déconnexion</a></li>
+                <li><a class="col-lg-1 monlien" href="../search/search.php">Rechercher</a></li>
+                <li><a class="col-lg-1" href="../logout/logout.php">Déconnexion</a></li>
                 <li><a class="col-lg-2" href="../profil/profil.php?nom=<?= $_SESSION['username'] ?>">Mon profil</a></li>
             </ul>
             </p>
@@ -64,7 +72,7 @@
                         <h2>Mes discussions :</h2>
                     </div>
                     <div class="offset-lg-3 col-lg-4">
-                        <p id="link_new_topic"><a id="new-topic" href="../topic/creerTopic.html">Créer un nouveau topic !</a></p>
+                        <p id="link_new_topic"><a id="new-topic" href="../topic/creerTopic.php">Créer un nouveau topic !</a></p>
                     </div>
                 </div>
                 <div class="row">
@@ -89,6 +97,10 @@
         </div>
     </div>
 </div>
+
+<?php  }else{
+    header('Location: ../erreur/erreur.php');
+}?>
 </body>
 </html>
 

@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +10,9 @@
     <link rel="stylesheet" href="creerTopic.css">
 </head>
 <body>
+
+    <?php  if($_SESSION['connecte'] == true) {  ?>
+
     <h1>Creer un nouveau topic</h1>
     <div class="container">
         <div class="text-block">
@@ -25,5 +31,10 @@
             </form>
         </div>
     </div>
+
+    <?php  }else{
+        header('Location: ../erreur/erreur.php');
+    }
+    ?>
 </body>
 </html>

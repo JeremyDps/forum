@@ -39,7 +39,8 @@ class Utilisateur {
             header('Location: http://localhost/forum/accueil/accueil.php');
             exit();
         }else{
-            header('Location: http://localhost/forum/connexion/erreurConnexion.html');
+            //header('Location: http://localhost/forum/connexion/erreurConnexion.html');
+            header('Location: http://localhost/forum/accueil/accueil.php');
             exit();
         }
     }
@@ -91,6 +92,13 @@ class Utilisateur {
         }
     }
 
+    /*function getConnecte(){
+        return $this->connecte;
+    }
+
+    function setConnecte($boolean) {
+        $this->connecte = $boolean;
+    }*/
 }
 
 ?>

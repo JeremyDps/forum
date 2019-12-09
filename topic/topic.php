@@ -28,14 +28,17 @@ $_SESSION['idTopic'] = $res[0];
         <link rel="stylesheet" href="topic.css">
     </head>
     <body>
+
+    <?php if($_SESSION['connecte'] == true) {  ?>
+
     <div class="container-fluid">
         <header id="entete">
             <div class="nav-head row">
                 <h1 class="nom offset-lg-1 col-lg-3"><a href="../accueil/accueil.php">Mon forum</a></h1>
                 <p>
                     <ul class="nav-head-ul offset-lg-3">
-                        <li><a class="col-lg-1" href="#">Rechercher</a></li>
-                        <li><a class="col-lg-1" href="#">Déconnexion</a></li>
+                        <li><a class="col-lg-1" href="../search/search.php">Rechercher</a></li>
+                        <li><a class="col-lg-1" href="../logout/logout.php">Déconnexion</a></li>
                         <li><a class="col-lg-2" href="../profil/profil.php?nom=<?= $_SESSION['username'] ?>">Mon profil</a></li>
                     </ul>
                 </p>
@@ -77,7 +80,7 @@ $_SESSION['idTopic'] = $res[0];
                             <h2>Mes thèmes :</h2>
                         </div>
                         <div class="offset-lg-3 col-lg-4">
-                            <p id="link_new_topic"><a id="new-topic" href="../theme/creerTheme.html">Créer un nouveau thème !</a></p>
+                            <p id="link_new_topic"><a id="new-topic" href="../theme/creerTheme.php">Créer un nouveau thème !</a></p>
                         </div>
                     </div>
                     <div class="row">
@@ -102,5 +105,10 @@ $_SESSION['idTopic'] = $res[0];
             </div>
         </div>
         </div>
+
+    <?php  }else{
+        header('Location: ../erreur/erreur.php');
+    }
+    ?>
     </body>
 </html>
