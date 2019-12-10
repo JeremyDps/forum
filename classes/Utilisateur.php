@@ -17,21 +17,19 @@ class Utilisateur {
         
     }
 
+    //creation d'un nouvel utilisateur (inscription)
     function create($firstName, $lastName, $userName, $mail, $password) {
         $db = new DBClass('forum');
 
         if($db->inscription($firstName, $lastName, $userName, $mail, $password) === true){
-            //echo ' vous etes inscris';
             header('Location: http://localhost/forum/accueil/accueil.php');
             exit();
         }else{
-            header('Location: http://localhost/forum/inscription/erreurInscription.html');
-            exit();
+            echo "erreur dans l'inscription, vérifiez votre adresse mail";
         }
-         //echo $db->inscription($firstName, $lastName, $userName, $mail, $password);
-
     }
 
+    //connexion
     function login($mail, $pass) {
         $db = new DBClass('forum');
 
@@ -39,39 +37,19 @@ class Utilisateur {
             header('Location: http://localhost/forum/accueil/accueil.php');
             exit();
         }else{
-            //header('Location: http://localhost/forum/connexion/erreurConnexion.html');
             header('Location: http://localhost/forum/accueil/accueil.php');
             exit();
         }
     }
 
+    //affichage du profil
     function selectProfile($name){
             $db = new DBClass('forum');
 
             return $db->selectProfileByUser($name);
     }
 
-    function unLog() {}
-
-    function envoyerMessage() {
-
-    }
-
-    function modifierMessage() {
-
-    }
-
-    function supprimerMessage() {
-
-    }
-
-    function setMail($mail) {
-        $db = new DBClass('forum');
-        $db->updateMail($mail);
-        header('Location: http://localhost/forum/profil/profil.php?nom='.$_SESSION['username']);
-        exit();
-    }
-
+    //modifier le nom d'utilisateur
     function setUsername($user) {
         if($this->modifierUsername == 1) {
             $db = new DBClass('forum');
@@ -83,6 +61,7 @@ class Utilisateur {
         }
     }
 
+    //modifier le mot de passe
     function setPassword($new, $old){
         $db = new DBClass('forum');
 
@@ -91,14 +70,6 @@ class Utilisateur {
             exit();
         }
     }
-
-    /*function getConnecte(){
-        return $this->connecte;
-    }
-
-    function setConnecte($boolean) {
-        $this->connecte = $boolean;
-    }*/
 }
 
 ?>

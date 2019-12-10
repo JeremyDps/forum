@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION['connecte'] == true) { // Si tu es connecté on te déconnecte et on te redirige vers une page.
+if ($_SESSION['connecte'] == true) {
 
     // Supression des variables de session et de la session
     $_SESSION = array();

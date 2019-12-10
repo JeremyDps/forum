@@ -19,12 +19,12 @@
                 <form class="offset-lg-3 col-lg-6" method="post" action="../classes/essai.php">
                     <div class="form-group">
                         <label name="actualPassword">Votre mot de passe actuel</label>
-                        <input type="password" name="actualPassword" class="form-control">
+                        <input type="password" name="actualPassword" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label name="newPassword" >Votre nouveau mot de passe</label>
-                        <input type="password" name="newPassword" class="form-control">
+                        <input type="password" name="newPassword" class="form-control" required>
                     </div>
 
                     <div class="form-group">

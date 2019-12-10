@@ -3,11 +3,8 @@
 require_once('DBClass.php');
 
 class Post {
-    protected $id;
-    protected $title;
-    protected $createdBy;
-    protected $createdOn;
 
+    //creation d'un nouveau message
     public function create($message) {
         session_start();
         $db = new DBClass('forum');
@@ -18,14 +15,12 @@ class Post {
         header('Location: http://localhost/forum/discussion/discussion.php?nom='.$idTheme);
     }
 
+    //selection des message en fonction du theme
     public function messageByTheme($idTheme) {
         $db = new DBClass('forum');
 
         return $db->selectMessageByTheme($idTheme);
     }
 
-    public function getTopics() {}
 }
-
-
 ?>

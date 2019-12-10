@@ -2,14 +2,10 @@
 require_once('DBClass.php');
 
 class Theme {
-    protected $id;
-    protected $title;
-    protected $createdBy;
-    protected $createdOn;
 
+    //creation d'un nouveau theme
     public function create($name) {
         $db = new DBClass('forum');
-
 
         $var =  $db->createTheme($name);
         echo $var;
@@ -17,19 +13,19 @@ class Theme {
         exit();
     }
 
+    //selection des themes en fonction des topics
     public function selectByTopic($name){
         $db = new DBClass('forum');
 
         return $db->selectThemeByTopic($name);
     }
 
+    //recherche l'id du theme
     public function themeByName($nomTheme) {
         $db = new DBClass('forum');
 
         return $db->selectIdBytheme($nomTheme);
     }
-
-    public function getTopics() {}
 }
 
 ?>

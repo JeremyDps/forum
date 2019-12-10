@@ -2,16 +2,11 @@
 require_once('DBClass.php');
 
 class Topic {
-    protected $titre;
-    protected $description;
-    protected $dateCreation;
-    protected $nbrMembres;
 
     function __construct() {
     }
 
-
-
+    //creation d'un nouveau topic
     function create($name, $description) {
         $db = new DBClass('forum');
 
@@ -23,24 +18,33 @@ class Topic {
         }
     }
 
+    //afficher les topics de l'utilisateur
     function topicByUser($username) {
         $db = new DBClass('forum');
 
         return $db->selectTopicByUser($username);
     }
 
+    //rechercher tous les topics
+    function allTopics() {
+        $db = new DBClass('forum');
+
+        return $db->selectAllTopics();
+    }
+
+    //rechercher la description du topic
     function descByName($name) {
         $db = new DBClass('forum');
 
         return $db->selectDescByName($name);
     }
 
-    function delete() {}
-
+    //modifier le titre
     function setTitle($newTitre) {
         $this->titre = $newTitre;
     }
 
+    //modifier la description
     function setDescription($desc) {
         $this->description = $desc;
     }

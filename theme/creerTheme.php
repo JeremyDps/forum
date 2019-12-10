@@ -19,7 +19,7 @@
             <form class="offset-lg-3 col-lg-6" method="post" action="../classes/essai.php">
                 <div class="form-group">
                     <label name="nom">Nom du thème</label>
-                    <input type="text" name="nom" class="form-control" aria-describedby="emailHelp" placeholder="Nom du thème">
+                    <input type="text" name="nom" class="form-control" aria-describedby="emailHelp" placeholder="Nom du thème" required>
                 </div>
                 <div class="form-group">
                     <input class="btn btn-primary" type="submit" name="theme" value="creer le nouveau thème">

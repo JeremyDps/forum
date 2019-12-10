@@ -20,11 +20,11 @@
                 <form class="offset-lg-3 col-lg-6" method="post" action="../classes/essai.php">
                     <div class="form-group">
                         <label name="newUsername">Votre nouveau nom d'utilisateur : </label>
-                        <input type="text" name="newUsername" class="form-control">
+                        <input type="text" name="newUsername" class="form-control" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" name="username" value="Modifier le nom d'utilisateur" class="btn btn-primary">
+                        <input type="submit" name="changeUsername" value="Modifier le nom d'utilisateur" class="btn btn-primary">
                     </div>
                 </form>
             </div>

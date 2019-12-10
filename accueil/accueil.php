@@ -32,7 +32,7 @@
             <h1 class="nom offset-lg-1 col-lg-3"><a href="#">Mon forum</a></h1>
             <p>
             <ul class="nav-head-ul offset-lg-3">
-                <li><a class="col-lg-1 monlien" href="../search/search.php">Rechercher</a></li>
+                <li><a class="col-lg-1 monlien" href="../forums/forums.php">Forums</a></li>
                 <li><a class="col-lg-1" href="../logout/logout.php">Déconnexion</a></li>
                 <li><a class="col-lg-2" href="../profil/profil.php?nom=<?= $_SESSION['username'] ?>">Mon profil</a></li>
             </ul>

@@ -18,10 +18,6 @@ class DBClass
         $this->db_host = $db_host;
     }
 
-    /*
-     *
-     * */
-
     public function getPDO() {
         if($this->pdo === null) {
             try {
@@ -34,6 +30,7 @@ class DBClass
         return $this->pdo;
     }
 
+    //se connecter
     public function connection($mail, $pass){
         session_start();
         $dateTime = date('Y-m-d, H:i:s');
@@ -62,17 +59,18 @@ class DBClass
         }
     }
 
+    //s'inscrire
     public function inscription($firstName, $lastName, $userName, $mail, $password) {
         session_start();
 
         $dateTime = date('Y-m-d, H:i:s');
-        /*$req = $this->getPDO()->query("select adrMail from user");
+
+        $req = $this->getPDO()->query("select adrMail from user");
         while($datas = $req->fetch()){
             if($datas['adrMail'] === $mail){
-                echo "erreur : votre adresse mail existe déjà";
                 return 0;
             }
-        }*/
+        }
         $req = $this->getPDO()->prepare("insert into user(id, prenom, nom, username, adrMail, password, modifierUsername, nbConnexion, lastConnexionDatetime) values (default, :prenom, :nom, :username, :adrMail, :password, 1, 1, :lastConnexionDatetime)");
 
         if($req->execute(array(
@@ -95,12 +93,7 @@ class DBClass
 
     }
 
-    public function signOut(){}
-
-    public function update(){}
-
-    public function delete(){}
-
+    //création d'un nouveau topic
     public function createTopic($name, $description) {
         session_start();
 
@@ -122,11 +115,11 @@ class DBClass
         }
     }
 
-
-
+    //selection des topic en fonction de l'utilisateur
     public function selectTopicByUser($username) {
         $i = 0;
         $tabTopic = array();
+
         $req = $this->getPDO()->prepare("select id, name, description, createdAt from topic where createdBy = ?");
         $req->execute(array($username));
 
@@ -135,11 +128,32 @@ class DBClass
             $i++;
         }
         $req->closeCursor();
-        //print_r($tabTopic);
 
         return $tabTopic;
     }
 
+    //selection de tous les topics présents en base
+    public function selectAllTopics(){
+        $tabTopic = array();
+        $i = 0;
+
+        $req = $this->getPDO()->query("select name, description, createdBy from topic order by createdAt");
+
+        while($isConnecte = $req->fetch()) {
+            $tabTopic[$i] = array(
+                "name" => $isConnecte['name'],
+                "desc" => $isConnecte['description'],
+                "creation" => $isConnecte['createdBy']
+            );
+            $i++;
+        }
+
+        $req->closeCursor();
+
+        return $tabTopic;
+    }
+
+    //selection de la description en fonction du nom du topic
     public function selectDescByName($name) {
         $tabTopic = array();
 
@@ -157,6 +171,7 @@ class DBClass
         return $tabTopic;
     }
 
+    //creation de theme
     public function createTheme($name){
         session_start();
 
@@ -182,6 +197,7 @@ class DBClass
         return $isConnecte['name'];
     }
 
+    //selectionner les thèmes du topic passé en paramètre
     public function selectThemeByTopic($name){
         $tabTheme = array();
         $i = 0;
@@ -200,6 +216,7 @@ class DBClass
         return $tabTheme;
     }
 
+    //selectionne l'id du thème passé en paramètre
     public function selectIdByTheme($nomTheme){
         session_start();
 
@@ -216,7 +233,7 @@ class DBClass
         return $idTheme;
     }
 
-
+    //creation d'un message
     public function createMessage($message) {
         session_start();
 
@@ -234,16 +251,20 @@ class DBClass
         $req->closeCursor();
     }
 
+    //selecion des messages par thème
     public function selectMessageByTheme($idTheme) {
         $tabMessages = array();
         $i = 0;
 
-        $req = $this->getPDO()->prepare("select * from message where idTheme = ?");
+        $req = $this->getPDO()->prepare("select auteur, contenu from message where idTheme = ? order by idMessage");
 
         $req->execute(array($idTheme));
 
         while($isConnecte = $req->fetch()) {
-            $tabMessages[$i] = $isConnecte['contenu'];
+            $tabMessages[$i] = array(
+                "auteur" => $isConnecte['auteur'],
+                "contenu" => $isConnecte['contenu']
+            );
             $i++;
         }
 
@@ -252,6 +273,7 @@ class DBClass
         return $tabMessages;
     }
 
+    //selection du profil
     public function selectProfileByUser($name){
         $tabProfile = array();
 
@@ -273,6 +295,7 @@ class DBClass
         return $tabProfile;
     }
 
+    //modifier le nom d'utilisateur dans la table user
     public function updateUsername($username){
         session_start();
         $req = $this->getPDO()->prepare("update user set username = :newUser, modifierUsername = 0 where username = :user");
@@ -290,6 +313,7 @@ class DBClass
         $req->closeCursor();
     }
 
+    //modifier le nom d'utilisateur dans la table topic
     public function updateUsernameOnTopic($username){
         $req = $this->getPDO()->prepare("update topic set createdBy = :newUser where createdBy = :user");
         $req->execute(array(
@@ -300,6 +324,7 @@ class DBClass
         $req->closeCursor();
     }
 
+    //modifier le nom d'utilisateur dans la table theme
     public function updateUsernameOnTheme($username) {
         $req = $this->getPDO()->prepare("update theme set createdBy = :newUser where createdBy = :user");
         $req->execute(array(
@@ -310,6 +335,7 @@ class DBClass
         $req->closeCursor();
     }
 
+    //modifier le nom d'utilisateur dans la table message
     public function updateUsernameOnMessage($username) {
         $req = $this->getPDO()->prepare("update message set auteur = :newUser where auteur = :user");
         $req->execute(array(
@@ -320,20 +346,7 @@ class DBClass
         $req->closeCursor();
     }
 
-    public function updateMail($mail){
-        session_start();
-
-        $req = $this->getPDO()->prepare("update user set adrMail = :newMail where adrMail = :mail");
-        $req->execute(array(
-            'newMail' => $mail,
-            'mail' => $_SESSION['mail']
-        ));
-
-        $_SESSION['mail'] = $mail;
-
-        $req->closeCursor();
-    }
-
+    //controle du mot de passe avant le changement
     public function passwordControl($old){
         $req = $this->getPDO()->prepare("select password from user where password = ?");
         $req->execute(array($old));
@@ -350,6 +363,7 @@ class DBClass
 
     }
 
+    //changement du mot de passe
     public function updatePassword($new, $old){
         session_start();
         if($this->passwordControl($old)){

@@ -1,5 +1,11 @@
 <?php
-//session_start();
+
+
+
+// CE FICHIER SERT AU TRAITEMENT DES FORMULAIRES
+
+
+
 
 require_once('Utilisateur.php');
 require_once('Topic.php');
@@ -47,7 +53,7 @@ $post = new Post();
         $post->create($message);
     }
 
-    if(isset($_POST['username'])) {
+    if(isset($_POST['changeUsername'])) {
         if(strlen($_POST['newUsername']) != 0) {
             $user->setUsername($_POST['newUsername']);
         }else{
