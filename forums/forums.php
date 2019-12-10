@@ -45,16 +45,16 @@
                     <?php
                     foreach($allTopics as $tab){
                         ?>
-                        <div class="offset-lg-1 col-lg-2 bloc_forum">
-                            <p id="title">
-                                <strong><?php echo $tab['name'];  ?></strong>
-                            </p>
-                            <ul>
-                                <li><strong>Description : </strong><?php  echo $tab['desc']  ?></li>
-                                <li><strong>Crée par : </strong><?php  echo $tab['creation']  ?></li>
-                            </ul>
-                            <p id="link_new_topic"><a id="new-topic" href="../topic/topic.php?nom=<?= $tab['name'] ?>">Consulter</a></p>
-                        </div>
+                            <div class="offset-lg-1 col-lg-4 bloc_forum">
+                                <p id="title">
+                                    <strong><?php echo $tab['name'];  ?></strong>
+                                </p>
+                                <ul>
+                                    <li><strong>Description : </strong><?php  echo $tab['desc']  ?></li>
+                                    <li><strong>Crée par : </strong><?php  echo $tab['creation']  ?></li>
+                                </ul>
+                                <p id="link_new_topic"><a id="new-topic" href="../topic/topic.php?nom=<?= $tab['name'] ?>">Consulter</a></p>
+                            </div>
                         <?php
                     }
                     ?>

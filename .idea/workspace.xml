@@ -14,6 +14,7 @@
       <change beforePath="$PROJECT_DIR$/classes/essai.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/essai.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/post.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/post.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/discussion/discussion.php" beforeDir="false" afterPath="$PROJECT_DIR$/discussion/discussion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forum.sql" beforeDir="false" afterPath="$PROJECT_DIR$/forum.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inscription/inscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/inscription/inscription.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logout/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/logout/logout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/profil/changePassword.php" beforeDir="false" afterPath="$PROJECT_DIR$/profil/changePassword.php" afterDir="false" />
@@ -39,7 +40,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/topic/topic.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="437">
@@ -47,6 +48,15 @@
               <folding>
                 <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/forums/forums.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="57" column="29" lean-forward="true" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -130,9 +140,9 @@
         <option value="$PROJECT_DIR$/classes/Topic.php" />
         <option value="$PROJECT_DIR$/classes/Utilisateur.php" />
         <option value="$PROJECT_DIR$/discussion/discussion.php" />
-        <option value="$PROJECT_DIR$/forums/forums.php" />
         <option value="$PROJECT_DIR$/logout/logout.php" />
         <option value="$PROJECT_DIR$/profil/profil.php" />
+        <option value="$PROJECT_DIR$/forums/forums.php" />
       </list>
     </option>
   </component>
@@ -154,6 +164,11 @@
             <path>
               <item name="forum" type="b2602c69:ProjectViewProjectNode" />
               <item name="forum" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="forum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="forum" type="462c0819:PsiDirectoryNode" />
+              <item name="forums" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -221,15 +236,16 @@
       <workItem from="1575294313202" duration="11971000" />
       <workItem from="1575451161238" duration="4654000" />
       <workItem from="1575904591084" duration="8678000" />
-      <workItem from="1575963769959" duration="8710000" />
+      <workItem from="1575963769959" duration="9010000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132005000" />
+    <option name="totallyTimeSpent" value="132305000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13557047" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -547,18 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/forums/forums.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="67" column="7" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
-          <folding>
-            <element signature="n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#2091#2107#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inscription/inscription.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
@@ -606,6 +610,13 @@
           <folding>
             <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forums/forums.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="57" column="29" lean-forward="true" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="29" />
         </state>
       </provider>
     </entry>
